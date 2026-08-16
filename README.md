@@ -47,4 +47,14 @@ Python · FastAPI · SQLAlchemy · `python-telegram-bot` · APIs de LLM compatib
 
 ## Estado
 
-El sistema real está en desarrollo activo, en uso real dentro de la operación diaria de la empresa (no es un prototipo de demostración). Pensado desde el inicio con una capa de servicios independiente del canal de entrada, para poder reutilizarse en otras empresas de mantenimiento con un modelo de negocio similar.
+El sistema real está en desarrollo activo, en uso real dentro de la operación diaria de la empresa (no es un prototipo de demostración). Diseñado con una capa de servicios independiente del canal de entrada, lo que permite agregar canales nuevos (como WhatsApp, sumado después de Telegram) sin tocar la lógica de negocio.
+
+## Cómo correr los ejemplos
+
+Cada archivo en `examples/` es autocontenido:
+
+- `service_request_lifecycle.py` y `channel_access_control.py` corren directo, sin dependencias externas ni credenciales:
+  ```bash
+  python examples/service_request_lifecycle.py
+  ```
+- `conversational_agent.py` muestra el patrón de la cadena de proveedores LLM con fallback - para correrlo de verdad harían falta API keys propias (Groq/Gemini u otro proveedor compatible con OpenAI) y el paquete `openai` instalado (`pip install openai`).
